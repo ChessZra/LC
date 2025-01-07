@@ -9,7 +9,6 @@ class Solution:
                 return (0, y + x)
 
         visited = set()
-        @cache
         def solve(x, y):
   
             if (x + y) == target:
