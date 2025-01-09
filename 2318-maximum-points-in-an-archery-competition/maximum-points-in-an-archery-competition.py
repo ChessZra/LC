@@ -2,7 +2,6 @@ class Solution:
     def maximumBobPoints(self, numArrows: int, aliceArrows: List[int]) -> List[int]:
         INF = 10 ** 20
 
-        @cache
         def solve(arrows_left, index):
             if index < 0:
                 if arrows_left < 0:
