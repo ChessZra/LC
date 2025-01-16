@@ -2,9 +2,6 @@ class Solution:
     def findLexSmallestString(self, s: str, a: int, b: int) -> str:
         N = len(s)
 
-        def shift(arr, x):
-            return arr[x:] + arr[:x]
-
         best = None
         def go(x, y):
             nonlocal best
@@ -21,12 +18,12 @@ class Solution:
             offset = 0 
 
             while offset not in visited:
-                new_arr = shift(arr, offset)
+                new_arr = arr[offset:] + arr[:offset]
                 if best is None:
-                    best = new_arr.copy()
+                    best = new_arr
                 else:
                     if new_arr < best:
-                        best = new_arr.copy()
+                        best = new_arr
 
                 visited.add(offset)
                 offset += b
