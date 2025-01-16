@@ -3,10 +3,7 @@ class Solution:
         N = len(s)
 
         def shift(arr, x):
-            new_arr = [None] * N
-            for i in range(N):
-                new_arr[(i + x) % N] = arr[i]
-            return new_arr
+            return arr[x:] + arr[:x]
 
         best = None
         def go(x, y):
