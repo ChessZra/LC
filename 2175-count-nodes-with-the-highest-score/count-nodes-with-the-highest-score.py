@@ -25,10 +25,9 @@ class Solution:
                 total += get_size(c)
                 prod *= get_size(c)
                 dfs(c) # try out other stuff
-                
+
             prod *= max(1, N - 1 - total)
             f[prod] += 1
-            
             
         dfs(0)
 
