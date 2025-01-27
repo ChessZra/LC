@@ -1,7 +1,3 @@
-select teacher_id, count(*) as cnt
-from (
-    select teacher_id, subject_id
-    from Teacher
-    group by teacher_id, subject_id
-) t 
+select teacher_id, count(distinct subject_id) as cnt
+from Teacher
 group by teacher_id
