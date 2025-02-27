@@ -1,16 +1,15 @@
 class Solution:
     def displayTable(self, orders: List[List[str]]) -> List[List[str]]:
 
-        foods, tables, mp = set(), set(), dict() 
-        for customer_name, table_number, food_item in orders:
-            int_table_number = int(table_number)
-            if int_table_number not in mp:
-                mp[int_table_number] = collections.Counter()
-            mp[int_table_number][food_item] += 1
+        foods, tables = set(), dict() 
+        for _, table_number, food_item in orders:
+            table_number = int(table_number)
+            if table_number not in tables:
+                tables[table_number] = Counter()
+            tables[table_number][food_item] += 1
             foods.add(food_item)
-            tables.add(int_table_number)
 
-        tables_sorted = sorted(list(tables))
+        tables_sorted = sorted(tables.keys())
         foods_sorted = sorted(list(foods))
 
         res = [['Table']]
@@ -19,6 +18,6 @@ class Solution:
         for table in tables_sorted:
             temp = [str(table)]
             for food in foods_sorted:
-                temp.append(str(mp[table][food]))
+                temp.append(str(tables[table][food]))
             res.append(temp)
         return res
