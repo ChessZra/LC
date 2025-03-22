@@ -6,20 +6,22 @@ class Solution:
             adj[v].append(u)
 
         connected = collections.defaultdict(list)
-        visited = set()
-        def dfs(node, id):
-            if node in visited:
-                return
-            visited.add(node)
-            connected[id].append(node)
-            
-            for neighbor in adj[node]:
-                dfs(neighbor, id)
-        
+        seen = [False] * n
+        def bfs(node, id):
+            q = deque([node])
+            while q:
+                cur = q.popleft()
+                if seen[cur]: continue
+                seen[cur] = True
+                connected[id].append(cur)
+
+                for neighbor in adj[cur]:
+                    q.append(neighbor)
+
         for i in range(n):
-            if i not in visited:
-                dfs(i, i)
-        
+            if not seen[i]:
+                bfs(i, i)
+
         res = 0
         for id, nodes in connected.items():
             num_nodes = len(nodes)
