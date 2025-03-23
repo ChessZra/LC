@@ -2,6 +2,7 @@ class Solution:
     def minOperationsToMakeMedianK(self, nums: List[int], k: int) -> int:
         nums.sort()
         N = len(nums)
+        
         def solve(mid):
             res = 0 
             for i in range(mid):
@@ -12,10 +13,9 @@ class Solution:
                 if nums[i] < k:
                     res += abs(k - nums[i])
             return res
-        # print(nums)
+    
         if N % 2 == 1:
             return solve(N // 2)
-        # print(solve(N // 2 - 1), solve(N // 2))
 
         if nums[N // 2] >= k:
             return solve(N // 2)
