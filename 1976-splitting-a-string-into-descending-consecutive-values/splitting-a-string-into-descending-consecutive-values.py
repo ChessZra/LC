@@ -1,10 +1,10 @@
 class Solution:
     def splitString(self, s: str) -> bool:
         N = len(s)
-
+        int_s = int(s)
         def solve(index, prev):
             if index >= N:
-                return prev != int(s)
+                return prev != int_s
             
             cur = ""
             best = False
