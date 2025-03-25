@@ -9,18 +9,16 @@ class Solution:
         self.mp = {}
 
     def flip(self) -> List[int]:
+        # get a random index
         index = random.randint(0, self.last_index)
-        
-        if index not in self.mp:
-            self.mp[index] = self.mp.get(self.last_index, self.last_index)
-            self.last_index -= 1
-            return [index // self.C, index % self.C]
-        else:
-            old = index
-            index = self.mp[index]
-            self.mp[old] = self.mp.get(self.last_index, self.last_index)
-            self.last_index -= 1
-            return [index // self.C, index % self.C]
+        # get the unused index
+        want = self.mp.get(index, index)
+        # change the random index to the last index
+        self.mp[index] = self.mp.get(self.last_index, self.last_index)
+        # decrement last index
+        self.last_index -= 1
+        # return 
+        return [want // self.C, want % self.C]
 
     def reset(self) -> None:
         self.last_index = self.R * self.C - 1
