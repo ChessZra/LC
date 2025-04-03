@@ -10,11 +10,9 @@ class Solution:
             return 0
         mx = nums[0]
         stk = [Element(0, nums[0])]
-        typeshi = N + 1
+        typeshi = float('inf')
         res = 0
         for i in range(1, N):
-    
-            # Case where it exceeds left
             changed = None
             while stk and stk[-1].num > nums[i]:
                 res = max(res, i - stk[-1].idx + 1)
@@ -27,9 +25,7 @@ class Solution:
             else:
                 stk.append(Element(i, nums[i]))
 
-            # Case where it doesn't exceed
             mx = max(mx, nums[i])
-            if typeshi != N + 1 and mx > nums[i]:
-               #  print(mx, nums[i], typeshi)
+            if mx > nums[i]:
                 res = max(res, i - typeshi + 1)
         return res
