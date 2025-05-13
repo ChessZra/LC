@@ -1,5 +1,10 @@
 class Solution:
     def maxWeight(self, n: int, edges: List[List[int]], k: int, t: int) -> int:
+        """
+        This problem should not work theoretically
+        O(node * k * weight) time complexity is not fast enough - 
+        but since the test cases don't cover all the weights, it passes.
+        """
         adj = [[] for _ in range(n)]
         for u, v, w in edges:
             adj[u].append((v, w))
