@@ -34,7 +34,7 @@ class Solution:
                     f[k] -= 1
                     remainder -= 1
                     break
-
+            # if fail, take away from an even
             for k, v in f.items():                
                 if remainder == 0:
                     break
@@ -47,6 +47,4 @@ class Solution:
                 break
             res += 1
         
-           
-
         return res
