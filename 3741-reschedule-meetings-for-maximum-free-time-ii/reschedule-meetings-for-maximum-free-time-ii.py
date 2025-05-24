@@ -26,18 +26,12 @@ class Solution:
                 left[i] = max(left[i], left[i - 1])
 
         res = 0
-        # Reschedule to the same section (maximize)
         for i in range(N):
-            l = 0
-            if i > 0:
-                l = intervals[i - 1][1]
-            
-            r = eventTime
-            if i < N - 1:
-                r = intervals[i + 1][0]
+            # Reschedule to the same section (maximize)
+            l = 0 if i == 0 else intervals[i - 1][1]
+            r = eventTime if i == N - 1 else intervals[i + 1][0]
             res = max(res, intervals[i][0] - l + r - intervals[i][1])
 
-        for i in range(N):
             # Reschedule to the left
             if i > 0:
                 size = intervals[i][1] - intervals[i][0]
