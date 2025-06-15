@@ -1,0 +1,1 @@
+<h2>minimum-moves-to-capture-the-queen Notes</h2><hr>[ Time taken: 13 m 33 s ]
