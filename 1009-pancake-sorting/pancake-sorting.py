@@ -3,7 +3,6 @@ class Solution:
         res = []
         N = len(arr)
         current = N
-        # print(arr)
         for index in range(N - 1, -1, -1):
             if current == arr[index]:
                 current -= 1
@@ -14,5 +13,4 @@ class Solution:
                 res.append(where + 1)
                 res.append(index + 1)
                 current -= 1
-                # print(arr, res)
         return res
