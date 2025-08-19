@@ -3,10 +3,9 @@ class Solution:
         f = defaultdict(list)
         res = 0
         N = len(s)
-        ord_a = ord('a')
-        ord_z = ord('z')
+        delta = ord('a') + ord('z')
         for i in range(N):
-            mirror = chr(ord_a + (ord_z - ord_a) - (ord(s[i]) - ord_a))
+            mirror = chr(delta - ord(s[i]))
             if f[mirror]:
                 res += i - f[mirror].pop()
             else:
