@@ -1,26 +1,18 @@
 class Solution:
     def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
         N = len(nums)
-        arr = []
-        for i in range(N):
-            if left <= nums[i] <= right:
-                arr.append(1)
-            elif nums[i] > right:
-                arr.append(-1)
-            else:
-                arr.append(0)
         res = 0
-        last_negative_one = -1
-        last_one = None
+        last_greater = -1
+        last_within = None
         for i in range(N):
-            if arr[i] == -1:
-                last_negative_one = i
-                last_one = None
+            if nums[i] > right:
+                last_greater = i
+                last_within = None
                 continue
-            if arr[i] == 1:
-                res += i - last_negative_one
-                last_one = i
-            else: # arr[i] == 0
-                if last_one is not None:
-                    res += 1 + (last_one - last_negative_one - 1)
+            if left <= nums[i] <= right:
+                res += i - last_greater
+                last_within = i
+            else: # nums[i] < left
+                if last_within is not None:
+                    res += 1 + (last_within - last_greater - 1)
         return res
