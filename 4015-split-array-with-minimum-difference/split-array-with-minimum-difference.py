@@ -19,7 +19,5 @@ class Solution:
             if i > 0 and nums[i] <= nums[i - 1]:
                 break
             if i >= bad:
-                # print('here', s, i)
                 res = min(res, abs(s - right_sum[i + 1]))
-        # print(bad, right_sum)
         return -1 if res == INF else res
