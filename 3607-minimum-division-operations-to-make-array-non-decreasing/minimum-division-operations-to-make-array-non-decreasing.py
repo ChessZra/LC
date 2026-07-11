@@ -26,7 +26,6 @@ class Solution:
                         nums[i] //= best
                         res += 1
                         break
-                # print(nums)
                 if nums[i] > nums[i + 1]:
                     return -1
         return res
